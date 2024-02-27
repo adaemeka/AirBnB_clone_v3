@@ -28,16 +28,16 @@ This project is interpreted/tested on Ubuntu 14.04 LTS using python3 (version 3.
 * Run hbnb(non-interactively): `echo "<command>" | ./console.py`
 
 ## File Descriptions
-[console.py](console.py) - the console contains the entry point of the command interpreter. 
+[console.py](console.py) - the console contains the entry point of the command interpreter.
 List of commands this console current supports:
-* `EOF` - exits console 
+* `EOF` - exits console
 * `quit` - exits console
 * `<emptyline>` - overwrites default emptyline method and does nothing
 * `create` - Creates a new instance of`BaseModel`, saves it (to the JSON file) and prints the id
-* `destroy` - Deletes an instance based on the class name and id (save the change into the JSON file). 
+* `destroy` - Deletes an instance based on the class name and id (save the change into the JSON file).
 * `show` - Prints the string representation of an instance based on the class name and id.
-* `all` - Prints all string representation of all instances based or not on the class name. 
-* `update` - Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file). 
+* `all` - Prints all string representation of all instances based or not on the class name.
+* `update` - Updates an instance based on the class name and id by adding or updating attribute (save the change into the JSON file).
 
 #### `models/` directory contains classes used for this project:
 [base_model.py](/models/base_model.py) - The BaseModel class from which future classes will be derived
@@ -151,12 +151,35 @@ EOF  all  create  destroy  help  quit  show  update
 ```
 
 ## Bugs
-No known bugs at this time. 
+No known bugs at this time.
 
 ## Authors
-Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)  
+Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)
 Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)
+Adaobi Ifeanyi - [Github](https://github.com/adaemeka) / [Twitter](https://twitter.com/ada4emeka24)
 
 Second part of Airbnb: Joann Vuong
 ## License
-Public Domain. No copy write protection. 
+Public Domain. No copy write protection.
+
+i created a folder api at the root of the project with an empty file __init__.py
+i created a folder v1 inside api:
+i created an empty file __init__.py
+i created a file app.py:
+i created a variable app, instance of Flask
+i imported storage from models
+i imported app_views from api.v1.views
+i registered the blueprint app_views to Flask instance app
+i declared a method to handle @app.teardown_appcontext that calls storage.close()
+inside if __name__ == "__main__":, i run Flask server (variable app) with:
+host = environment variable HBNB_API_HOST or 0.0.0.0 if not defined
+port = environment variable HBNB_API_PORT or 5000 if not defined
+threaded=True
+i created a folder views inside v1:
+i created a file __init__.py:
+i imported Blueprint from flask doc
+i created a variable app_views which is an instance of Blueprint (url prefix must be /api/v1)
+wildcard import of everything in the package api.v1.views.index => PEP8 will complain about it, don’t worry, it’s normal and this file (v1/views/__init__.py) won’t be check.
+i created a file index.py
+i imported app_views from api.v1.views
+i created a route /status on the object app_views that returns a JSON: "status": "OK"
